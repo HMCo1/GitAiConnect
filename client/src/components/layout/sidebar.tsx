@@ -52,14 +52,14 @@ export function Sidebar() {
                   <span>{item.name}</span>
                   {item.name === "Repositories" && repositories && (
                     <Badge variant="secondary" className="ml-auto">
-                      {repositories.length}
+                      {(repositories as any[]).length}
                     </Badge>
                   )}
                   {item.name === "Workflows" && workflows && (
                     <Badge 
                       className="ml-auto bg-green-100 text-green-800"
                     >
-                      {workflows.filter((w: any) => w.isActive).length}
+                      {(workflows as any[]).filter((w: any) => w.isActive).length}
                     </Badge>
                   )}
                 </div>
