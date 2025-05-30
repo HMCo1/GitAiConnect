@@ -143,7 +143,6 @@ export const insertRepositorySchema = createInsertSchema(repositories).omit({
 export const insertAnalysisSchema = createInsertSchema(analyses).omit({
   id: true,
   createdAt: true,
-  completedAt: true,
 });
 
 export const insertInsightSchema = createInsertSchema(insights).omit({

@@ -30,7 +30,7 @@ export function Sidebar() {
     queryKey: ["/api/workflows"],
   });
 
-  const recentRepos = repositories?.slice(0, 3) || [];
+  const recentRepos = (repositories as any[])?.slice(0, 3) || [];
 
   return (
     <aside className="w-60 bg-white border-r border-github-border">
@@ -40,9 +40,9 @@ export function Sidebar() {
             const isActive = location === item.href;
             return (
               <Link key={item.name} href={item.href}>
-                <a
+                <div
                   className={cn(
-                    "flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium transition-colors",
+                    "flex items-center space-x-3 px-3 py-2 rounded-md text-sm font-medium transition-colors cursor-pointer",
                     isActive
                       ? "bg-github-blue text-white"
                       : "text-github-text hover:bg-github-bg hover:text-github-dark"
@@ -62,7 +62,7 @@ export function Sidebar() {
                       {workflows.filter((w: any) => w.isActive).length}
                     </Badge>
                   )}
-                </a>
+                </div>
               </Link>
             );
           })}

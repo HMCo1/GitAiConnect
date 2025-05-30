@@ -148,7 +148,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
       const files = await githubService.getRepositoryFiles(
         user.githubToken,
         repository.fullName,
-        repository.defaultBranch
+        repository.defaultBranch || "main"
       );
 
       res.json(files);
@@ -173,7 +173,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
         user.githubToken,
         repository.fullName,
         req.params.path,
-        repository.defaultBranch
+        repository.defaultBranch || "main"
       );
 
       res.json(content);
@@ -217,7 +217,7 @@ export async function registerRoutes(app: Express): Promise<Server> {
             user.githubToken!,
             repository.fullName,
             filePath,
-            repository.defaultBranch
+            repository.defaultBranch || "main"
           );
 
           const analysisResult = await openaiService.analyzeCode(
@@ -230,7 +230,6 @@ export async function registerRoutes(app: Express): Promise<Server> {
             status: "completed",
             results: analysisResult,
             qualityScore: analysisResult.qualityScore,
-            completedAt: new Date(),
           });
 
           // Create insights if any issues found
