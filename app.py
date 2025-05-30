@@ -10,17 +10,28 @@ import sys
 def main():
     """Start the Node.js application"""
     try:
+        # Set environment variables for production
+        os.environ['NODE_ENV'] = 'production'
+        os.environ['PORT'] = '7860'
+        
         # Install dependencies
         print("Installing dependencies...")
-        subprocess.run(["npm", "install"], check=True)
+        subprocess.run(["npm", "ci"], check=True)
         
-        # Push database schema
-        print("Setting up database...")
-        subprocess.run(["npm", "run", "db:push"], check=True)
+        # Build the application
+        print("Building application...")
+        subprocess.run(["npm", "run", "build"], check=True)
+        
+        # Push database schema if DATABASE_URL is available
+        if os.environ.get('DATABASE_URL'):
+            print("Setting up database...")
+            subprocess.run(["npm", "run", "db:push"], check=True)
+        else:
+            print("Warning: DATABASE_URL not set, skipping database setup")
         
         # Start the application
         print("Starting application...")
-        subprocess.run(["npm", "run", "dev"], check=True)
+        subprocess.run(["npm", "start"], check=True)
         
     except subprocess.CalledProcessError as e:
         print(f"Error running command: {e}")

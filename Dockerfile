@@ -1,42 +1,28 @@
-# Multi-stage build for production deployment
-FROM node:20-alpine AS base
+FROM node:20-alpine
 
-# Install dependencies only when needed
-FROM base AS deps
-RUN apk add --no-cache libc6-compat
 WORKDIR /app
 
-COPY package*.json ./
-RUN npm ci --only=production
+# Install system dependencies
+RUN apk add --no-cache git
 
-# Build the application
-FROM base AS builder
-WORKDIR /app
+# Copy package files
 COPY package*.json ./
+
+# Install dependencies
 RUN npm ci
 
+# Copy source code
 COPY . .
+
+# Build the application
 RUN npm run build
 
-# Production image
-FROM base AS runner
-WORKDIR /app
-
+# Set environment variables
 ENV NODE_ENV=production
 ENV PORT=7860
 
-RUN addgroup --system --gid 1001 nodejs
-RUN adduser --system --uid 1001 nextjs
-
-COPY --from=deps /app/node_modules ./node_modules
-COPY --from=builder /app/dist ./dist
-COPY --from=builder /app/package.json ./package.json
-COPY --from=builder /app/server ./server
-COPY --from=builder /app/shared ./shared
-COPY --from=builder /app/drizzle.config.ts ./drizzle.config.ts
-
-USER nextjs
-
+# Expose port
 EXPOSE 7860
 
+# Start the application
 CMD ["npm", "start"]
