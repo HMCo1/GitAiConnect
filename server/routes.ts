@@ -412,5 +412,192 @@ export async function registerRoutes(app: Express): Promise<Server> {
     }
   });
 
+  // Custom GPT integration endpoint
+  app.post("/api/gpt/connect", async (req, res) => {
+    try {
+      const { action, repositoryId, analysisType, name, description, trigger, config } = req.body;
+      
+      switch (action) {
+        case "analyze_repository":
+          if (!repositoryId) {
+            return res.status(400).json({ error: "Repository ID required" });
+          }
+          
+          const repository = await storage.getRepository(repositoryId);
+          if (!repository) {
+            return res.status(404).json({ error: "Repository not found" });
+          }
+
+          const analysis = await storage.createAnalysis({
+            repositoryId,
+            filePath: ".",
+            analysisType: analysisType || "quality",
+            status: "pending"
+          });
+
+          res.json({
+            message: "Analysis started successfully",
+            analysisId: analysis.id,
+            status: "pending",
+            repository: {
+              name: repository.name,
+              language: repository.language,
+              stars: repository.stars
+            }
+          });
+          break;
+
+        case "get_insights":
+          const user = await storage.getUserByUsername("demo");
+          const insights = await storage.getRecentInsights(user?.id || 1);
+          res.json({
+            insights: insights.map(insight => ({
+              type: insight.type,
+              severity: insight.severity,
+              title: insight.title,
+              description: insight.description,
+              filePath: insight.filePath,
+              suggestions: insight.suggestions
+            }))
+          });
+          break;
+
+        case "create_workflow":
+          const currentUser = await storage.getUserByUsername("demo");
+          const workflow = await storage.createWorkflow({
+            userId: currentUser?.id || 1,
+            name: name || "GPT Generated Workflow",
+            description: description || "Automated workflow created by custom GPT",
+            trigger: trigger || "manual",
+            config: config || {},
+            isActive: true
+          });
+          
+          res.json({
+            message: "Workflow created successfully",
+            workflow: {
+              id: workflow.id,
+              name: workflow.name,
+              description: workflow.description,
+              trigger: workflow.trigger,
+              isActive: workflow.isActive
+            }
+          });
+          break;
+
+        default:
+          res.status(400).json({ error: "Invalid action specified" });
+      }
+    } catch (error) {
+      console.error(`GPT connection error: ${(error as Error).message}`);
+      res.status(500).json({ error: "Internal server error" });
+    }
+  });
+
+  // Serve OpenAPI specification for custom GPT
+  app.get("/openapi.json", (req, res) => {
+    const baseUrl = `${req.protocol}://${req.get("host")}`;
+    const spec = {
+      "openapi": "3.0.0",
+      "info": {
+        "title": "AI Code Intelligence Platform API",
+        "description": "API for custom GPT integration with code analysis and automation features",
+        "version": "1.0.0"
+      },
+      "servers": [{ "url": baseUrl }],
+      "paths": {
+        "/api/repositories": {
+          "get": {
+            "summary": "List all repositories",
+            "operationId": "getRepositories",
+            "responses": {
+              "200": {
+                "description": "List of repositories",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "array",
+                      "items": {
+                        "type": "object",
+                        "properties": {
+                          "id": { "type": "integer" },
+                          "name": { "type": "string" },
+                          "language": { "type": "string" },
+                          "stars": { "type": "integer" },
+                          "qualityScore": { "type": "number" }
+                        }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        },
+        "/api/gpt/connect": {
+          "post": {
+            "summary": "GPT integration endpoint",
+            "operationId": "gptConnect",
+            "requestBody": {
+              "content": {
+                "application/json": {
+                  "schema": {
+                    "type": "object",
+                    "properties": {
+                      "action": {
+                        "type": "string",
+                        "enum": ["analyze_repository", "get_insights", "create_workflow"],
+                        "description": "Action to perform"
+                      },
+                      "repositoryId": {
+                        "type": "integer",
+                        "description": "Repository ID for analysis"
+                      },
+                      "analysisType": {
+                        "type": "string",
+                        "enum": ["quality", "security", "performance", "documentation"],
+                        "description": "Type of analysis to perform"
+                      },
+                      "name": {
+                        "type": "string",
+                        "description": "Workflow name"
+                      },
+                      "description": {
+                        "type": "string", 
+                        "description": "Workflow description"
+                      },
+                      "trigger": {
+                        "type": "string",
+                        "enum": ["push", "pull_request", "schedule", "manual"],
+                        "description": "Workflow trigger"
+                      }
+                    }
+                  }
+                }
+              }
+            },
+            "responses": {
+              "200": {
+                "description": "Success response",
+                "content": {
+                  "application/json": {
+                    "schema": {
+                      "type": "object",
+                      "properties": {
+                        "message": { "type": "string" },
+                        "data": { "type": "object" }
+                      }
+                    }
+                  }
+                }
+              }
+            }
+          }
+        }
+      }
+    };
+    res.json(spec);
+  });
+
   return httpServer;
 }
