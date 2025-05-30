@@ -14,6 +14,18 @@ def main():
         os.environ['NODE_ENV'] = 'production'
         os.environ['PORT'] = '7860'
         
+        # Ensure all required environment variables are available
+        required_vars = ['OPENAI_API_KEY']
+        for var in required_vars:
+            if not os.environ.get(var):
+                print(f"Warning: {var} environment variable not set")
+        
+        # Optional GitHub integration
+        if os.environ.get('GITHUB_TOKEN'):
+            print("GitHub integration enabled")
+        else:
+            print("GitHub integration disabled - set GITHUB_TOKEN to enable")
+        
         # Install dependencies
         print("Installing dependencies...")
         subprocess.run(["npm", "ci"], check=True)
