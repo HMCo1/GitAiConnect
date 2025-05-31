@@ -16,7 +16,7 @@ function Router() {
       <Sidebar />
       <div className="flex-1 flex flex-col">
         <Navbar />
-        <main className="flex-1 p-6 bg-github-bg">
+        <main className="flex-1 p-6 bg-darker cyber-grid">
           <Switch>
             <Route path="/" component={Dashboard} />
             <Route path="/repositories" component={Repositories} />

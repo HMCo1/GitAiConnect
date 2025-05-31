@@ -1,93 +1,88 @@
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
-  --background: 0 0% 100%;
-  --foreground: 210 11% 17%; /* #24292e - github-dark */
-  --muted: 210 11% 96%; /* #f6f8fa - github-bg */
-  --muted-foreground: 213 12% 40%; /* #586069 - github-text */
-  --popover: 0 0% 100%;
-  --popover-foreground: 210 11% 17%;
-  --card: 0 0% 100%;
-  --card-foreground: 210 11% 17%;
-  --border: 210 13% 88%; /* #e1e4e8 - github-border */
-  --input: 210 13% 88%;
-  --primary: 213 92% 45%; /* #0366d6 - github-blue */
-  --primary-foreground: 213 100% 99%;
-  --secondary: 210 11% 96%;
-  --secondary-foreground: 210 11% 17%;
-  --accent: 210 11% 96%;
-  --accent-foreground: 210 11% 17%;
+  --background: 0 0% 5%; /* Very dark background */
+  --foreground: 0 0% 95%; /* Light text */
+  --muted: 0 0% 10%; /* Dark muted areas */
+  --muted-foreground: 0 0% 60%; /* Muted text */
+  --popover: 0 0% 8%;
+  --popover-foreground: 0 0% 95%;
+  --card: 0 0% 8%;
+  --card-foreground: 0 0% 95%;
+  --border: 240 15% 15%; /* Dark borders */
+  --input: 240 15% 15%;
+  --primary: 282 100% 65%; /* Neon purple */
+  --primary-foreground: 0 0% 5%;
+  --secondary: 0 0% 12%;
+  --secondary-foreground: 0 0% 95%;
+  --accent: 0 0% 12%;
+  --accent-foreground: 0 0% 95%;
   --destructive: 0 84% 60%;
   --destructive-foreground: 60 9% 98%;
-  --ring: 213 92% 45%;
+  --ring: 282 100% 65%;
   --radius: 0.5rem;
 
-  /* Custom GitHub AI colors */
-  --github-blue: 213 92% 45%; /* #0366d6 */
-  --ai-purple: 259 51% 51%; /* #6f42c1 */
-  --github-bg: 210 11% 96%; /* #f6f8fa */
-  --github-border: 210 13% 88%; /* #e1e4e8 */
-  --github-text: 213 12% 40%; /* #586069 */
-  --github-dark: 210 11% 17%; /* #24292e */
+  /* Custom neon colors */
+  --neon-purple: 282 100% 65%; /* #C147FF */
+  --neon-cyan: 180 100% 50%; /* #00FFFF */
+  --neon-pink: 330 100% 70%; /* #FF3399 */
+  --neon-green: 120 100% 50%; /* #00FF00 */
+  --neon-orange: 30 100% 60%; /* #FF9900 */
+  --dark-bg: 0 0% 5%; /* #0D0D0D */
+  --darker-bg: 0 0% 3%; /* #080808 */
+  --dark-surface: 240 15% 8%; /* #111218 */
 
   /* Chart colors */
-  --chart-1: 213 92% 45%;
-  --chart-2: 259 51% 51%;
-  --chart-3: 45 93% 47%;
-  --chart-4: 120 39% 54%;
-  --chart-5: 0 84% 60%;
+  --chart-1: 282 100% 65%;
+  --chart-2: 180 100% 50%;
+  --chart-3: 330 100% 70%;
+  --chart-4: 120 100% 50%;
+  --chart-5: 30 100% 60%;
 
   /* Sidebar colors */
-  --sidebar-background: 0 0% 100%;
-  --sidebar-foreground: 210 11% 17%;
-  --sidebar-primary: 213 92% 45%;
-  --sidebar-primary-foreground: 213 100% 99%;
-  --sidebar-accent: 210 11% 96%;
-  --sidebar-accent-foreground: 210 11% 17%;
-  --sidebar-border: 210 13% 88%;
-  --sidebar-ring: 213 92% 45%;
+  --sidebar-background: 0 0% 3%;
+  --sidebar-foreground: 0 0% 95%;
+  --sidebar-primary: 282 100% 65%;
+  --sidebar-primary-foreground: 0 0% 5%;
+  --sidebar-accent: 240 15% 8%;
+  --sidebar-accent-foreground: 0 0% 95%;
+  --sidebar-border: 240 15% 15%;
+  --sidebar-ring: 282 100% 65%;
 }
 
 .dark {
-  --background: 210 11% 4%; /* Dark version of github-dark */
-  --foreground: 0 0% 98%;
-  --muted: 210 11% 8%;
-  --muted-foreground: 213 12% 65%;
-  --popover: 210 11% 4%;
-  --popover-foreground: 0 0% 98%;
-  --card: 210 11% 4%;
-  --card-foreground: 0 0% 98%;
-  --border: 210 11% 15%;
-  --input: 210 11% 15%;
-  --primary: 213 92% 55%;
-  --primary-foreground: 213 100% 99%;
-  --secondary: 210 11% 8%;
-  --secondary-foreground: 0 0% 98%;
-  --accent: 210 11% 8%;
-  --accent-foreground: 0 0% 98%;
+  --background: 0 0% 5%;
+  --foreground: 0 0% 95%;
+  --muted: 0 0% 10%;
+  --muted-foreground: 0 0% 60%;
+  --popover: 0 0% 8%;
+  --popover-foreground: 0 0% 95%;
+  --card: 0 0% 8%;
+  --card-foreground: 0 0% 95%;
+  --border: 240 15% 15%;
+  --input: 240 15% 15%;
+  --primary: 282 100% 65%;
+  --primary-foreground: 0 0% 5%;
+  --secondary: 0 0% 12%;
+  --secondary-foreground: 0 0% 95%;
+  --accent: 0 0% 12%;
+  --accent-foreground: 0 0% 95%;
   --destructive: 0 63% 31%;
   --destructive-foreground: 0 0% 98%;
-  --ring: 213 92% 55%;
-
-  /* Custom GitHub AI colors for dark mode */
-  --github-blue: 213 92% 55%;
-  --ai-purple: 259 51% 61%;
-  --github-bg: 210 11% 8%;
-  --github-border: 210 11% 15%;
-  --github-text: 213 12% 65%;
-  --github-dark: 0 0% 98%;
+  --ring: 282 100% 65%;
 
   /* Sidebar colors for dark mode */
-  --sidebar-background: 210 11% 4%;
-  --sidebar-foreground: 0 0% 98%;
-  --sidebar-primary: 213 92% 55%;
-  --sidebar-primary-foreground: 213 100% 99%;
-  --sidebar-accent: 210 11% 8%;
-  --sidebar-accent-foreground: 0 0% 98%;
-  --sidebar-border: 210 11% 15%;
-  --sidebar-ring: 213 92% 55%;
+  --sidebar-background: 0 0% 3%;
+  --sidebar-foreground: 0 0% 95%;
+  --sidebar-primary: 282 100% 65%;
+  --sidebar-primary-foreground: 0 0% 5%;
+  --sidebar-accent: 240 15% 8%;
+  --sidebar-accent-foreground: 0 0% 95%;
+  --sidebar-border: 240 15% 15%;
+  --sidebar-ring: 282 100% 65%;
 }
 
 @layer base {
@@ -96,138 +91,216 @@
   }
 
   body {
-    @apply font-sans antialiased bg-background text-foreground;
+    @apply font-sans antialiased text-foreground;
+    background: linear-gradient(135deg, hsl(var(--darker-bg)) 0%, hsl(var(--dark-bg)) 100%);
     font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    min-height: 100vh;
   }
 
-  /* Custom utility classes for GitHub colors */
-  .text-github-blue {
-    color: hsl(var(--github-blue));
+  /* Custom utility classes for neon colors */
+  .text-neon-purple {
+    color: hsl(var(--neon-purple));
+    text-shadow: 0 0 10px hsl(var(--neon-purple) / 0.5);
   }
 
-  .text-ai-purple {
-    color: hsl(var(--ai-purple));
+  .text-neon-cyan {
+    color: hsl(var(--neon-cyan));
+    text-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.5);
   }
 
-  .text-github-text {
-    color: hsl(var(--github-text));
+  .text-neon-pink {
+    color: hsl(var(--neon-pink));
+    text-shadow: 0 0 10px hsl(var(--neon-pink) / 0.5);
   }
 
-  .text-github-dark {
-    color: hsl(var(--github-dark));
+  .text-neon-green {
+    color: hsl(var(--neon-green));
+    text-shadow: 0 0 10px hsl(var(--neon-green) / 0.5);
   }
 
-  .bg-github-bg {
-    background-color: hsl(var(--github-bg));
+  .text-neon-orange {
+    color: hsl(var(--neon-orange));
+    text-shadow: 0 0 10px hsl(var(--neon-orange) / 0.5);
   }
 
-  .bg-github-blue {
-    background-color: hsl(var(--github-blue));
+  .bg-dark {
+    background-color: hsl(var(--dark-bg));
   }
 
-  .bg-ai-purple {
-    background-color: hsl(var(--ai-purple));
+  .bg-darker {
+    background-color: hsl(var(--darker-bg));
   }
 
-  .border-github-border {
-    border-color: hsl(var(--github-border));
+  .bg-dark-surface {
+    background-color: hsl(var(--dark-surface));
   }
 
-  .hover\:bg-github-bg:hover {
-    background-color: hsl(var(--github-bg));
+  .bg-neon-purple {
+    background-color: hsl(var(--neon-purple));
+    box-shadow: 0 0 20px hsl(var(--neon-purple) / 0.4);
+  }
+
+  .bg-neon-cyan {
+    background-color: hsl(var(--neon-cyan));
+    box-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.4);
+  }
+
+  .bg-neon-pink {
+    background-color: hsl(var(--neon-pink));
+    box-shadow: 0 0 20px hsl(var(--neon-pink) / 0.4);
+  }
+
+  .bg-neon-green {
+    background-color: hsl(var(--neon-green));
+    box-shadow: 0 0 20px hsl(var(--neon-green) / 0.4);
+  }
+
+  .border-neon-purple {
+    border-color: hsl(var(--neon-purple));
+    box-shadow: 0 0 10px hsl(var(--neon-purple) / 0.3);
+  }
+
+  .border-neon-cyan {
+    border-color: hsl(var(--neon-cyan));
+    box-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.3);
+  }
+
+  .border-neon-pink {
+    border-color: hsl(var(--neon-pink));
+    box-shadow: 0 0 10px hsl(var(--neon-pink) / 0.3);
+  }
+
+  .border-neon-green {
+    border-color: hsl(var(--neon-green));
+    box-shadow: 0 0 10px hsl(var(--neon-green) / 0.3);
+  }
+
+  .hover\:bg-dark-surface:hover {
+    background-color: hsl(var(--dark-surface));
   }
 
   /* Custom animations */
-  .animate-pulse-soft {
-    animation: pulse-soft 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+  .animate-pulse-neon {
+    animation: pulse-neon 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
   }
 
-  @keyframes pulse-soft {
+  @keyframes pulse-neon {
     0%, 100% {
-      opacity: 1;
+      text-shadow: 0 0 10px hsl(var(--neon-purple) / 0.8);
+      box-shadow: 0 0 20px hsl(var(--neon-purple) / 0.4);
     }
     50% {
-      opacity: .7;
+      text-shadow: 0 0 20px hsl(var(--neon-purple) / 1);
+      box-shadow: 0 0 40px hsl(var(--neon-purple) / 0.6);
+    }
+  }
+
+  .animate-glow {
+    animation: glow 2s ease-in-out infinite alternate;
+  }
+
+  @keyframes glow {
+    from {
+      box-shadow: 0 0 10px hsl(var(--neon-purple) / 0.4);
+    }
+    to {
+      box-shadow: 0 0 30px hsl(var(--neon-purple) / 0.8);
     }
   }
 
   /* Code block styling */
   .code-preview {
-    background-color: hsl(210 11% 4%);
-    color: hsl(120 39% 54%);
+    background-color: hsl(var(--darker-bg));
+    color: hsl(var(--neon-green));
     font-family: 'SF Mono', 'Consolas', 'Monaco', monospace;
+    border: 1px solid hsl(var(--neon-purple) / 0.3);
+    box-shadow: 0 0 15px hsl(var(--neon-purple) / 0.2);
   }
 
   .code-preview .text-gray-500 {
-    color: hsl(213 12% 50%);
+    color: hsl(var(--neon-cyan));
   }
 
-  /* Insight card styling */
+  /* Card styling with neon effects */
   .insight-card {
-    transition: all 0.2s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    background: linear-gradient(135deg, hsl(var(--dark-surface)) 0%, hsl(var(--darker-bg)) 100%);
+    border: 1px solid hsl(var(--border));
   }
 
   .insight-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-    transform: translateY(-1px);
+    box-shadow: 0 8px 32px hsl(var(--neon-purple) / 0.3);
+    transform: translateY(-2px);
+    border-color: hsl(var(--neon-purple) / 0.5);
   }
 
   /* Activity feed styling */
   .activity-item {
-    transition: background-color 0.15s ease-in-out;
+    transition: all 0.2s ease-in-out;
+    background-color: hsl(var(--dark-surface));
   }
 
   .activity-item:hover {
-    background-color: hsl(var(--github-bg));
+    background-color: hsl(var(--dark-bg));
+    box-shadow: 0 0 15px hsl(var(--neon-cyan) / 0.2);
   }
 
   /* Repository card styling */
   .repo-card {
-    transition: all 0.2s ease-in-out;
-    border: 1px solid hsl(var(--github-border));
+    transition: all 0.3s ease-in-out;
+    background: linear-gradient(135deg, hsl(var(--dark-surface)) 0%, hsl(var(--darker-bg)) 100%);
+    border: 1px solid hsl(var(--border));
   }
 
   .repo-card:hover {
-    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
-    transform: translateY(-1px);
+    box-shadow: 0 8px 32px hsl(var(--neon-cyan) / 0.3);
+    transform: translateY(-2px);
+    border-color: hsl(var(--neon-cyan) / 0.5);
   }
 
-  /* Badge styling */
+  /* Badge styling with neon variants */
   .badge-critical {
-    background-color: hsl(0 84% 95%);
-    color: hsl(0 84% 30%);
-    border: 1px solid hsl(0 84% 85%);
+    background: linear-gradient(135deg, hsl(0 84% 15%) 0%, hsl(0 84% 10%) 100%);
+    color: hsl(var(--neon-pink));
+    border: 1px solid hsl(var(--neon-pink) / 0.3);
+    box-shadow: 0 0 10px hsl(var(--neon-pink) / 0.2);
   }
 
   .badge-high {
-    background-color: hsl(25 95% 95%);
-    color: hsl(25 95% 30%);
-    border: 1px solid hsl(25 95% 85%);
+    background: linear-gradient(135deg, hsl(30 100% 15%) 0%, hsl(30 100% 10%) 100%);
+    color: hsl(var(--neon-orange));
+    border: 1px solid hsl(var(--neon-orange) / 0.3);
+    box-shadow: 0 0 10px hsl(var(--neon-orange) / 0.2);
   }
 
   .badge-medium {
-    background-color: hsl(45 95% 95%);
-    color: hsl(45 95% 30%);
-    border: 1px solid hsl(45 95% 85%);
+    background: linear-gradient(135deg, hsl(180 100% 15%) 0%, hsl(180 100% 10%) 100%);
+    color: hsl(var(--neon-cyan));
+    border: 1px solid hsl(var(--neon-cyan) / 0.3);
+    box-shadow: 0 0 10px hsl(var(--neon-cyan) / 0.2);
   }
 
   .badge-low {
-    background-color: hsl(213 92% 95%);
-    color: hsl(213 92% 30%);
-    border: 1px solid hsl(213 92% 85%);
+    background: linear-gradient(135deg, hsl(120 100% 15%) 0%, hsl(120 100% 10%) 100%);
+    color: hsl(var(--neon-green));
+    border: 1px solid hsl(var(--neon-green) / 0.3);
+    box-shadow: 0 0 10px hsl(var(--neon-green) / 0.2);
   }
 
   /* Gradient backgrounds */
-  .gradient-purple-blue {
-    background: linear-gradient(135deg, hsl(259 51% 96%) 0%, hsl(213 92% 96%) 100%);
+  .gradient-neon {
+    background: linear-gradient(135deg, 
+      hsl(var(--neon-purple) / 0.1) 0%, 
+      hsl(var(--neon-cyan) / 0.1) 50%,
+      hsl(var(--neon-pink) / 0.1) 100%);
   }
 
-  /* Loading states */
+  /* Loading states with neon */
   .loading-shimmer {
     background: linear-gradient(90deg, 
-      hsl(var(--muted)) 25%, 
-      hsl(var(--muted-foreground) / 0.1) 50%, 
-      hsl(var(--muted)) 75%);
+      hsl(var(--dark-surface)) 25%, 
+      hsl(var(--neon-purple) / 0.1) 50%, 
+      hsl(var(--dark-surface)) 75%);
     background-size: 200% 100%;
     animation: shimmer 1.5s infinite;
   }
@@ -241,57 +314,70 @@
     }
   }
 
-  /* Status indicators */
+  /* Status indicators with neon */
   .status-running {
-    animation: pulse 2s infinite;
+    animation: pulse-neon 2s infinite;
+    color: hsl(var(--neon-cyan));
   }
 
   .status-complete {
-    color: hsl(120 39% 54%);
+    color: hsl(var(--neon-green));
+    text-shadow: 0 0 10px hsl(var(--neon-green) / 0.5);
   }
 
   .status-failed {
-    color: hsl(0 84% 60%);
+    color: hsl(var(--neon-pink));
+    text-shadow: 0 0 10px hsl(var(--neon-pink) / 0.5);
   }
 
   .status-pending {
-    color: hsl(45 93% 47%);
+    color: hsl(var(--neon-orange));
+    text-shadow: 0 0 10px hsl(var(--neon-orange) / 0.5);
   }
 
   /* Search input styling */
   .search-input {
-    background-color: hsl(var(--github-bg));
-    border: 1px solid hsl(var(--github-border));
-    transition: all 0.15s ease-in-out;
+    background-color: hsl(var(--dark-surface));
+    border: 1px solid hsl(var(--border));
+    transition: all 0.3s ease-in-out;
   }
 
   .search-input:focus {
-    border-color: hsl(var(--github-blue));
-    box-shadow: 0 0 0 3px hsl(var(--github-blue) / 0.1);
+    border-color: hsl(var(--neon-purple));
+    box-shadow: 0 0 0 3px hsl(var(--neon-purple) / 0.2),
+                0 0 20px hsl(var(--neon-purple) / 0.3);
   }
 
   /* Navigation styling */
   .nav-link {
-    transition: all 0.15s ease-in-out;
+    transition: all 0.3s ease-in-out;
+    position: relative;
   }
 
   .nav-link:hover {
-    background-color: hsl(var(--github-bg));
-    color: hsl(var(--github-dark));
+    background-color: hsl(var(--dark-surface));
+    color: hsl(var(--neon-purple));
+    text-shadow: 0 0 10px hsl(var(--neon-purple) / 0.5);
   }
 
   .nav-link.active {
-    background-color: hsl(var(--github-blue));
-    color: white;
+    background: linear-gradient(135deg, hsl(var(--neon-purple) / 0.2) 0%, hsl(var(--neon-purple) / 0.1) 100%);
+    color: hsl(var(--neon-purple));
+    border: 1px solid hsl(var(--neon-purple) / 0.3);
+    box-shadow: 0 0 20px hsl(var(--neon-purple) / 0.3);
   }
 
   /* Button hover effects */
-  .btn-github:hover {
-    background-color: hsl(213 92% 40%);
+  .btn-neon:hover {
+    background-color: hsl(var(--neon-purple));
+    box-shadow: 0 0 30px hsl(var(--neon-purple) / 0.6);
+    text-shadow: 0 0 10px hsl(var(--darker-bg));
   }
 
-  .btn-purple:hover {
-    background-color: hsl(259 51% 46%);
+  .btn-cyan:hover {
+    background-color: hsl(var(--neon-cyan));
+    box-shadow: 0 0 30px hsl(var(--neon-cyan) / 0.6);
+    color: hsl(var(--darker-bg));
   }
 
   /* Line clamp utilities */
@@ -311,20 +397,41 @@
 
   /* Scrollbar styling */
   .custom-scrollbar::-webkit-scrollbar {
-    width: 6px;
+    width: 8px;
   }
 
   .custom-scrollbar::-webkit-scrollbar-track {
-    background: hsl(var(--muted));
+    background: hsl(var(--dark-surface));
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb {
-    background: hsl(var(--muted-foreground) / 0.3);
-    border-radius: 3px;
+    background: linear-gradient(180deg, hsl(var(--neon-purple)) 0%, hsl(var(--neon-cyan)) 100%);
+    border-radius: 4px;
+    box-shadow: 0 0 10px hsl(var(--neon-purple) / 0.3);
   }
 
   .custom-scrollbar::-webkit-scrollbar-thumb:hover {
-    background: hsl(var(--muted-foreground) / 0.5);
+    box-shadow: 0 0 20px hsl(var(--neon-purple) / 0.5);
+  }
+
+  /* Neon borders and outlines */
+  .neon-border {
+    border: 1px solid hsl(var(--neon-purple) / 0.5);
+    box-shadow: 0 0 15px hsl(var(--neon-purple) / 0.3);
+  }
+
+  .neon-outline {
+    outline: 2px solid hsl(var(--neon-cyan) / 0.5);
+    outline-offset: 2px;
+    box-shadow: 0 0 20px hsl(var(--neon-cyan) / 0.3);
+  }
+
+  /* Glass morphism effect */
+  .glass-morphism {
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
   }
 }
 
@@ -336,5 +443,21 @@
 
   .text-pretty {
     text-wrap: pretty;
+  }
+
+  /* Neon heading styles */
+  .neon-heading {
+    background: linear-gradient(135deg, hsl(var(--neon-purple)) 0%, hsl(var(--neon-cyan)) 100%);
+    background-clip: text;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: 0 0 30px hsl(var(--neon-purple) / 0.5);
+  }
+
+  .cyber-grid {
+    background-image: 
+      linear-gradient(rgba(194, 71, 255, 0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(194, 71, 255, 0.1) 1px, transparent 1px);
+    background-size: 50px 50px;
   }
 }
